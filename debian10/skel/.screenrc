@@ -1,0 +1,19 @@
+startup_message off
+vbell off
+
+defutf8 on
+autodetach on
+
+# avoid window size change
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# window bar
+# caption always "%{=u .wk} %-w%<%{=ub .by}%n %t%{=u .wk}%+w"
+caption always "%{= .wk} %-w%<%{=u .gk}%n %t%{= .wk}%+w"
+
+# terminal title
+hardstatus string "[%n%? %t%?] $USER@%H"
+
+# hardstatus alwaysignore
+# hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}$USER%{= .w}@%{= .Y}%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+

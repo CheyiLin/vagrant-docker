@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  config.vm.hostname = "debian10"
+  config.vm.provider "docker" do |d, override|
+    override.vm.box = nil
+    # d.image = ""
+    d.build_dir = "."
+    d.build_args = ["--tag=local/vagrant:debian10"]
+    d.has_ssh = true
+    d.privileged = true
+    d.remains_running = true
+    d.create_args = ["-v", "/sys/fs/cgroup:/sys/fs/cgroup:ro"]
+    # d.create_args = ["--platform=linux/arm64", "-v", "/sys/fs/cgroup:/sys/fs/cgroup:ro"]
+  end
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "sync/", "/home/vagrant/sync", create: true, automount: true
+
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get upgrade -y
+  # SHELL
+end

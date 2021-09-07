@@ -1,0 +1,38 @@
+[user]
+	name = Cheyi Lin
+	email = cheyi.lin@gmail.com
+[core]
+	filemode = false
+	autocrlf = false
+	preloadindex = true
+	fscache = true
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:'%C(red)%h%C(reset) - %C(green)%ai%C(reset) - %C(cyan)%an%C(reset)%C(yellow)%d%C(reset)%n%B' --graph
+	type = cat-file -t
+	dump = cat-file -p
+[color]
+	ui = true
+[core]
+	editor = code --wait
+[push]
+	default = simple
+	followTags = true
+[gc]
+	auto = 256
+[status]
+	submoduleSummary = false
+[http "https://gopkg.in"]
+	followRedirects = true
+[http]
+	postBuffer = 67108864
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+# [merge]
+# 	tool = opendiff
